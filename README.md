@@ -3,7 +3,7 @@
 This script helps keeping your Immich Albums in sync with your folders from external libraries.
 
 ## Config file
-```json
+```jsonc
 [
   {
     "path": "path/to/your/folder",
