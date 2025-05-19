@@ -16,7 +16,9 @@ RUN ["yarn", "install", "--frozen-lockfile"]
 # build image
 FROM node:lts-alpine AS builder
 RUN apk add yarn
+
 WORKDIR /app
+
 COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
@@ -30,7 +32,7 @@ RUN ["yarn", "build"]
 # ####################
 # production image, copy all the files and run next
 FROM node:lts-alpine as runner
-RUN apk add curl
+
 WORKDIR /app
 ENV NODE_ENV=production
 
