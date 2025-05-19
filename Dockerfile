@@ -1,21 +1,43 @@
-FROM node:22-alpine
-
-# Create app directory
+# ####################
+# INSTALL
+# ####################
+# install dependencies
+FROM node:lts-alpine AS deps
+RUN apk add --no-cache libc6-compat
+RUN apk add yarn
 WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-COPY yarn.lock ./
 RUN ["yarn", "install", "--frozen-lockfile"]
 
-# Copy the rest of the application code
+
+
+# ####################
+# BUILD
+# ####################
+# build image
+FROM node:lts-alpine AS builder
+RUN apk add yarn
+WORKDIR /app
 COPY . .
+COPY --from=deps /app/node_modules ./node_modules
 
-# Build the application
-RUN ["yarn", "build"]
+RUN ["yarn", "install", "--ignore-scripts", "--prefer-offline"]
+RUN ["yarn", "build"] 
 
-# Set environment variables
-EXPOSE 3000
 
-# Start the application
+
+# ####################
+# RUN
+# ####################
+# production image, copy all the files and run next
+FROM node:lts-alpine as runner
+RUN apk add curl
+WORKDIR /app
+ENV NODE_ENV=production
+
+COPY --from=builder /app/. .
+COPY README.md .
+
+RUN apk add --no-cache --upgrade bash
+
+
 CMD ["yarn", "start"]
