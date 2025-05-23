@@ -4,6 +4,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
 
 ## Config file
 ```jsonc
+// folders.json
 [
   {
     "path": "path/to/your/folder",
@@ -12,7 +13,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
   }
 ]
 ```
-In the config file you can define multiple albul-folder pairs. Each pair needs an absolute `path` to a [folder](https://immich.app/docs/features/folder-view/), an `albumId` (the UUID in the URL when you open an album) and a `recursive` flag. If the flag is set to `true`, all contents (including subfolders) of the given path will get added to the album.
+In the config file `folders.json` you can define multiple albul-folder pairs. Each pair needs an absolute `path` to a [folder](https://immich.app/docs/features/folder-view/), an `albumId` (the UUID in the URL when you open an album) and a `recursive` flag. If the flag is set to `true`, all contents (including subfolders) of the given path will get added to the album.
 
 If an album is not found. an error will get logged to the console. If a folder does not exist, nothing happens.
 
