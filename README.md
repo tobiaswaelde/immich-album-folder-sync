@@ -21,6 +21,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
 ### Environment Variables
 | Variable       | Type   | Required | Default Value | Description                                                                                  |
 | -------------- | ------ | -------- | ------------- | -------------------------------------------------------------------------------------------- |
+| PORT           | number | no       | `3001`        | The port where the webserver runs on.                                                        |
 | IMMICH_API_URL | string | yes      |               | Base URl to your Immich server (e.g. `'https://immich.domain.com'`)                          |
 | IMMICH_API_KEY | string | yes      |               | Immich [API Key](https://immich.app/docs/features/command-line-interface#obtain-the-api-key) |
 | SYNC_CRON      | string | no       | `'0 * * * *'` | Cron expression to sync (Default: every hour)                                                |

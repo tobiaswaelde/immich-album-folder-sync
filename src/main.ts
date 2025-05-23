@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { swaggerConfig, swaggerTheme } from './config/swagger';
+import { ENV } from './config/env';
 
 async function bootstrap() {
   // create NEST app
@@ -23,7 +24,7 @@ async function bootstrap() {
   });
 
   // start app
-  await app.listen(3001);
+  await app.listen(ENV.PORT);
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 
