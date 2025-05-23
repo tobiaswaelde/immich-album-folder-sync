@@ -1,6 +1,7 @@
 {
   "name": "immich-album-folder-sync",
   "description": "Easily keep you immich albums in sync with your folders",
+  "version": "0.0.1",
   "keywords": [
     "immich",
     "sync",
