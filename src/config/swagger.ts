@@ -1,16 +1,28 @@
 import { DocumentBuilder } from '@nestjs/swagger';
 
-console.log(process.env.npm_package_author);
-export const swaggerConfig = new DocumentBuilder()
+const documentBuilder = new DocumentBuilder()
   .setTitle(process.env.npm_package_name ?? 'Immich Folder-Album Sync')
-  .setDescription(process.env.npm_package_description ?? '')
-  .setContact(
-    process.env.npm_package_author_name,
-    process.env.npm_package_author_url,
-    process.env.npm_package_author_email,
-  )
-  .setVersion('')
-  .build();
+  .setDescription(process.env.npm_package_description ?? '');
+
+// add version information
+if (process.env.npm_package_version) {
+  documentBuilder.setVersion(process.env.npm_package_version);
+}
+
+// add author information
+if (
+  process.env.npm_package_author_name &&
+  process.env.npm_package_author_url &&
+  process.env.npm_package_author_email
+) {
+  documentBuilder.setContact(
+    process.env.npm_package_author_name ?? '',
+    process.env.npm_package_author_url ?? '',
+    process.env.npm_package_author_email ?? '',
+  );
+}
+
+export const swaggerConfig = documentBuilder.build();
 
 export const swaggerTheme = `a { color: #8c8cfa; }
 

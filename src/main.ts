@@ -18,11 +18,13 @@ async function bootstrap() {
 
   // swagger
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document, { customCss: swaggerTheme });
+  SwaggerModule.setup('api', app, document, {
+    customCss: swaggerTheme,
+  });
 
   // start app
   await app.listen(3001);
-  console.log(process.env);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 
 bootstrap();
