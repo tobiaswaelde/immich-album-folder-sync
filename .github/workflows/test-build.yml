@@ -16,7 +16,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --file Dockerfile --tag immich-album-folder-sync.
+          docker build --file Dockerfile --tag immich-album-folder-sync .
 
       - name: Verify image was built
         run: docker images | grep immich-album-folder-sync
