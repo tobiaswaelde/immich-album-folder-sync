@@ -10,6 +10,7 @@ If you are missing a feature or having trouble setting it up, feel free to creat
 
 
 ## 📚 Table Of Contents <!-- omit in toc -->
+- [✨ Features](#-features)
 - [⚙️ Configuration](#️-configuration)
   - [🌍 Environment Variables](#-environment-variables)
   - [🛠️ Config File](#️-config-file)
@@ -19,6 +20,13 @@ If you are missing a feature or having trouble setting it up, feel free to creat
 - [📦 Changelog](#-changelog)
 
 
+## ✨ Features
+
+- 🗂️ Automatically syncs folders with Immich albums
+- 🔁 Recursive sync support
+- ⏱️ Cron-based sync scheduling
+- 🧪 Dockerized for easy deployment
+
 
 ## ⚙️ Configuration
 
@@ -26,7 +34,7 @@ If you are missing a feature or having trouble setting it up, feel free to creat
 | Variable       | Type   | Required | Default Value | Description                                                                                  |
 | -------------- | ------ | -------- | ------------- | -------------------------------------------------------------------------------------------- |
 | PORT           | number | no       | `3001`        | The port where the webserver runs on.                                                        |
-| IMMICH_API_URL | string | yes      |               | Base URl to your Immich server (e.g. `'https://immich.domain.com'`)                          |
+| IMMICH_API_URL | string | yes      |               | Base URL to your Immich server (e.g. `'https://immich.domain.com'`)                          |
 | IMMICH_API_KEY | string | yes      |               | Immich [API Key](https://immich.app/docs/features/command-line-interface#obtain-the-api-key) |
 | SYNC_CRON      | string | no       | `'0 * * * *'` | Cron expression to sync (Default: every hour)                                                |
 
@@ -49,13 +57,13 @@ In the config file (`/app/config/folders.json`) you can define multiple album-fo
 | ----------- | -------- | ----------------------------------------------------------------------------------------------------------- |
 | `path`      | yes      | Absolute path to a [folder](https://immich.app/docs/features/folder-view/). Should not contain leading `/`. |
 | `albumId`   | yes      | The UUID in the URL when you open an album .                                                                |
-| `recursive` | no       | If set to `true`, all contents (including subfolders) of the given path will get added to the album.        |
+| `recursive` | no       | If set to `true`, all contents (including subfolders) of the given path will be added to the album.         |
 
 > [!TIP]
-> If an album is not found, an warning will get logged to the console and the sync continues with the next folder pair.
+> If an album is not found, a warning will get logged to the console and the sync continues with the next folder pair.
 
 > [!TIP]
-> If a folder does not exist, an warning will get logged to the console and the sync continues with the next folder pair.
+> If a folder does not exist, a warning will get logged to the console and the sync continues with the next folder pair.
 
 
 ## 🚀 Deployment
@@ -84,7 +92,7 @@ services:
 
 ## 📡 API
 
-You can find a detailed API documentation under [`http://localhost:3001/api`](http://localhost:3001/api).
+You can access the API documentation after deployment at [`http://localhost:3001/api`](http://localhost:3001/api).
 
 
 ## 📦 Changelog
