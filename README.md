@@ -25,7 +25,7 @@ If you are missing a feature or having trouble setting it up, feel free to creat
 - 🗂️ Automatically syncs folders with Immich albums
 - 🔁 Recursive sync support
 - ⏱️ Cron-based sync scheduling
-- 🧪 Dockerized for easy deployment
+- 🐋 Dockerized for easy deployment
 
 
 ## ⚙️ Configuration
