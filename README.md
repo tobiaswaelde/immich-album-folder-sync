@@ -6,6 +6,8 @@
 
 This script helps keeping your [Immich](https://immich.app/) Albums in sync with your folders from external libraries.
 
+If you are missing a feature or having trouble setting it up, feel free to create an issue.
+
 
 ## 📚 Table Of Contents <!-- omit in toc -->
 - [⚙️ Configuration](#️-configuration)
