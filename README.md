@@ -7,19 +7,20 @@
 This script helps keeping your [Immich](https://immich.app/) Albums in sync with your folders from external libraries.
 
 
-## Table Of Contents <!-- omit in toc -->
-- [Configuration](#configuration)
-  - [Environment Variables](#environment-variables)
-  - [Config File](#config-file)
-- [Deployment](#deployment)
-  - [Extending Immich Stack](#extending-immich-stack)
-- [API](#api)
+## 📚 Table Of Contents <!-- omit in toc -->
+- [⚙️ Configuration](#️-configuration)
+  - [🌍 Environment Variables](#-environment-variables)
+  - [🛠️ Config File](#️-config-file)
+- [🚀 Deployment](#-deployment)
+  - [🐋 Extending Immich Stack](#-extending-immich-stack)
+- [📡 API](#-api)
+- [📦 Changelog](#-changelog)
 
 
 
-## Configuration
+## ⚙️ Configuration
 
-### Environment Variables
+### 🌍 Environment Variables
 | Variable       | Type   | Required | Default Value | Description                                                                                  |
 | -------------- | ------ | -------- | ------------- | -------------------------------------------------------------------------------------------- |
 | PORT           | number | no       | `3001`        | The port where the webserver runs on.                                                        |
@@ -28,7 +29,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
 | SYNC_CRON      | string | no       | `'0 * * * *'` | Cron expression to sync (Default: every hour)                                                |
 
 
-### Config File
+### 🛠️ Config File
 In the config file (`/app/config/folders.json`) you can define multiple album-folder pairs.
 
 ```jsonc
@@ -55,9 +56,9 @@ In the config file (`/app/config/folders.json`) you can define multiple album-fo
 > If a folder does not exist, an warning will get logged to the console and the sync continues with the next folder pair.
 
 
-## Deployment
+## 🚀 Deployment
 
-### Extending Immich Stack
+### 🐋 Extending Immich Stack
 The easiest way to deploy the tool is to extend your existing Immich `compose.yaml`.
 ```yaml
 services:
@@ -78,5 +79,12 @@ services:
 
 ```
 
-## API
+
+## 📡 API
+
 You can find a detailed API documentation under [`http://localhost:3001/api`](http://localhost:3001/api).
+
+
+## 📦 Changelog
+
+See the [CHANGELOG.md](./CHANGELOG.md) for details on what’s new in recent versions.
