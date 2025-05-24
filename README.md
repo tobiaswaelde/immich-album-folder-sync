@@ -13,6 +13,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
   - [Config File](#config-file)
 - [Deployment](#deployment)
   - [Extending Immich Stack](#extending-immich-stack)
+- [API](#api)
 
 
 
@@ -25,6 +26,7 @@ This script helps keeping your [Immich](https://immich.app/) Albums in sync with
 | IMMICH_API_URL | string | yes      |               | Base URl to your Immich server (e.g. `'https://immich.domain.com'`)                          |
 | IMMICH_API_KEY | string | yes      |               | Immich [API Key](https://immich.app/docs/features/command-line-interface#obtain-the-api-key) |
 | SYNC_CRON      | string | no       | `'0 * * * *'` | Cron expression to sync (Default: every hour)                                                |
+
 
 ### Config File
 In the config file (`/app/config/folders.json`) you can define multiple album-folder pairs.
@@ -47,10 +49,10 @@ In the config file (`/app/config/folders.json`) you can define multiple album-fo
 | `recursive` | no       | If set to `true`, all contents (including subfolders) of the given path will get added to the album.        |
 
 > [!TIP]
-> If an album is not found. an error will get logged to the console.
+> If an album is not found, an warning will get logged to the console and the sync continues with the next folder pair.
 
 > [!TIP]
-> If a folder does not exist, nothing happens.
+> If a folder does not exist, an warning will get logged to the console and the sync continues with the next folder pair.
 
 
 ## Deployment
@@ -75,3 +77,6 @@ services:
       SYNC_CRON: '0 * * * *'
 
 ```
+
+## API
+You can find a detailed API documentation under [`http://localhost:3001/api`](http://localhost:3001/api).
