@@ -1,6 +1,6 @@
 import * as path from 'node:path';
 import * as dotenv from 'dotenv';
-import { cleanEnv, num, str } from 'envalid';
+import { bool, cleanEnv, num, str } from 'envalid';
 
 // load .env file
 const envPath = path.resolve(process.cwd(), '.env');
@@ -16,6 +16,7 @@ export const ENV = cleanEnv(process.env, {
     desc: 'Learn how to get your API key at https://immich.app/docs/features/command-line-interface#obtain-the-api-key',
   }),
   SYNC_CRON: str({ default: '0 * * * *', desc: 'Cron expression to sync' }),
+  SYNC_ON_START: bool({ default: true }),
 });
 
 // log environment variables to console (dev only)
