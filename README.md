@@ -37,6 +37,8 @@ If you are missing a feature or having trouble setting it up, feel free to creat
 | IMMICH_API_URL | string | yes      |               | Base URL to your Immich server (e.g. `'https://immich.domain.com'`)                          |
 | IMMICH_API_KEY | string | yes      |               | Immich [API Key](https://immich.app/docs/features/command-line-interface#obtain-the-api-key) |
 | SYNC_CRON      | string | no       | `'0 * * * *'` | Cron expression to sync (Default: every hour)                                                |
+| SYNC_ON_START  | bool   | no       | `false`       | If `true`, run initial sync on start                                                         |
+
 
 
 ### 🛠️ Config File

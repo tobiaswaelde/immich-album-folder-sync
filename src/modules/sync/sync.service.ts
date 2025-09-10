@@ -21,6 +21,10 @@ export class SyncService {
 
   constructor() {
     this.immichService = new ImmichService();
+
+    if (ENV.SYNC_ON_START) {
+      this.syncNow();
+    }
   }
 
   /**
