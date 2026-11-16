@@ -6,12 +6,10 @@ FROM node:lts-alpine AS builder
 # set working directory
 WORKDIR /app
 
-# install dependencies
-RUN apk update && apk add --no-cache yarn
-
 # install app dependencies
-COPY package.json /app/package.json
-RUN ["yarn", "install"]
+RUN npm install --global yarn@1.22.22
+COPY package.json yarn.lock ./
+RUN ["yarn", "install", "--frozen-lockfile"]
 
 # build app
 COPY . /app
@@ -24,8 +22,9 @@ RUN ["yarn", "build"]
 ### ####################
 FROM node:lts-alpine AS runner
 
-# install dependencies for healthcheck
-RUN apk update && apk add --no-cache curl
+# Apply Alpine security updates and install curl for the health check.
+RUN apk upgrade --no-cache && apk add --no-cache curl
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
 
 # set working directory
 WORKDIR /app
